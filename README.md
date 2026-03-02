@@ -144,4 +144,4 @@ This is just the beginning.
 
 ## License
 
-Void is licensed under the [Apache License v2.0](LICENSE.txt).
+Void is licensed under the [Apache License v2.0](LICENSE).
