@@ -225,7 +225,7 @@ def init_colors():
     curses.init_pair(COLOR_DECORATOR, curses.COLOR_YELLOW, -1)
     curses.init_pair(COLOR_LINE_NUM, BRIGHT_BLACK, -1)
     curses.init_pair(COLOR_NORMAL, curses.COLOR_WHITE, -1)
-    curses.init_pair(COLOR_STATUS, curses.COLOR_BLACK, BRIGHT_CYAN)
+    curses.init_pair(COLOR_STATUS, curses.COLOR_BLACK, curses.COLOR_WHITE)
     curses.init_pair(COLOR_DEFINITION, BRIGHT_MAGENTA, -1)
     curses.init_pair(COLOR_FUNC_NAME, BRIGHT_CYAN, -1)
     curses.init_pair(COLOR_INDENT_GUIDE, BRIGHT_BLACK, -1)

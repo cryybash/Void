@@ -18,7 +18,7 @@
 Void is a terminal-native text editor built from scratch in Python with the curses library. Although inspired by Vim/Neovim, it does not aim to clone them. It shares a baseline with other terminal editors, that I believe is necessary for rich user experiences. After that baseline Void will fork it's own path, a path I am most excited to take and share with the world.
 
 ![Void Demo](assets/BLACKVOID.gif)
-![Void Demo](assets/BlUEVOID.gif)
+
 
 There is an uncomfortable gap in the editor landscape. On one end, you have Vim and Neovim — lightning fast, endlessly configurable, but quite minimal by design. On the other, you have VS Code and the full GUI editors — rich with features, visually intuitive, but with heavy and inefficient mouse-driven workflows, Void lives in the space between. Yes, a tool is a tool and people have their preferences, a drill or a hammer? Why not both? And make it beautiful, because who doesn't love an elegant tool?
 
@@ -53,9 +53,9 @@ That said — it works. You can open files, edit them, save them, search through
 - **Splash screen** — Animated matrix rain startup with recent file access and keybind hints
 - **Recent files** — Tracks and surfaces your recently opened files on launch
 
-![Editor Screenshot](assets/VOID10.png)
+![Editor Screenshot](assets/VOID8.png)
 
-![Editor Screenshot](assets/VOID6.png)
+![Editor Screenshot](assets/VOID5.png)
 
 ## Getting Started
 
@@ -103,8 +103,8 @@ Ctrl+V ..... visual (block)
 / .......... search             FILE FINDER (Ctrl+F)
 n / N ...... next/prev match    j/k ........ navigate
 gt / gT .... next/prev tab      Enter ...... open / navigate
-                                h .......... toggle hidden
-
+                                h .......... go back a directory
+                                "." ........ show hidden files
 COMMAND MODE (:)
 :w  :q  :wq  :q!  :e <file>  :tabnew <file>  :saveas <file>
 ```
@@ -135,6 +135,8 @@ Void is being built with big plans. The current Python/curses implementation is 
 The long-term vision includes rewriting performance critical parts in a systems language as the project grows. It will have broader language support, plugin architecture, and features that have traditionally been reserved for heavyweight editors, but also features you would not expect in any editor — all without sacrificing the speed and directness of working inside a terminal.
 
 This is just the beginning.
+
+VOID.v0.1 
 
 ---
 
