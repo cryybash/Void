@@ -15,22 +15,22 @@
 
 ## What is Void?
 
-Void is a terminal-native text editor built from scratch in Python with the curses library. Although inspired by Vim/Neovim, it does not aim to clone them. It shares a baseline with other terminal editors, that I believe is necessary for rich user experiences. After that baseline Void will fork it's own path, a path I am most excited to take and share with the world.
+Void is a terminal-native text editor built from scratch in Python with the curses library. Although inspired by Vim/Neovim, it does not aim to clone them. I am a pretty new Dev and have so much to learn and this project in no way is already finalized on its long term progress. It shares a baseline with other terminal editors, that I believe is necessary for rich user experiences. After that baseline and standard of doing things I think I can create something that is its own thing, with features of both IDEs and terminal editors while also incorporating unique features that would really give this tool its own identity.
 
 ![Void Demo](assets/BLACKVOID.gif)
 
 
-There is an uncomfortable gap in the editor landscape. On one end, you have Vim and Neovim — lightning fast, endlessly configurable, but quite minimal by design. On the other, you have VS Code and the full GUI editors — rich with features, visually intuitive, but with heavy and inefficient mouse-driven workflows, Void lives in the space between. Yes, a tool is a tool and people have their preferences, a drill or a hammer? Why not both? And make it beautiful, because who doesn't love an elegant tool?
+I believe there is a niche space that could be filled in the world of editors and Dev environments, On one end, you have Vim and Neovim — fast, endlessly configurable, but quite minimal by design. On the other, you have full blown IDEs/Dev environments that are rich with features, visually intuitive, but with heavy and inefficient mouse-driven workflows, I want Void to live in the space between. I want to try and see how far you can really go with something like this, nothing is set in stone and ideas can change and boundaries of a space like this can most certainly be pushed in my opinion.
 
-The vision is an editor that inherits the speed, reliability, and keyboard-driven philosophy of traditional terminal editors while reaching toward the integrated, feature-rich experience that modern developers have come to expect from GUI editors. Vim motions are the foundation — not because Void is imitating Vim, but because that language of movement is simply the fastest way to navigate and manipulate text. Everything else built on top of the foundation of traditional GUI and terminal editors is where Void becomes its own thing. I want to push boundaries that we didn't even know could exist in the editor space.
+I have Vim motions as the current foundation of movement because I believe that language of movement is simply the fastest way to navigate and manipulate text. There are many standards/features in both IDEs and terminal editors I plan to inherit because some things shouldn't change, but I truly want to push boundaries that we didn't even know could exist in the editor space.
 
 Tabbed editing. An embedded terminal. A file finder panel. Visual selection. Syntax highlighting. Find and replace with confirmation workflows. Auto-pairing. Auto-indentation. Undo history. A floating HUD. All of it running inside your terminal, all of it driven by the keyboard, and all of it just the beginning.
 
 ## Current State
 
-**Void is a work in progress.** It has rough edges, known bugs, and missing features. Things are going to break, behavior is going to change. This is an actively evolving project, not a polished release.
+**Void is a work in progress.** It has rough edges, I am VERY new to shipping any type of software let alone a tool of this scope. There are still plenty of missing features and things will or may break and my ideas aren't all concrete, but that is a good thing in my opinion, I have already gotten tons of useful feedback from the community and I want this to be something that more than just me finds enjoyable and/or useful. This is an actively evolving project, not a polished release BY ANY MEANS. So much stuff is subject to change, improvement and outright being thrown out.
 
-That said — it works. You can open files, edit them, save them, search through them, select and manipulate text visually, manage tabs, run shell commands, and navigate your filesystem without ever leaving the terminal or reaching for a mouse. The bones are solid, and the direction is clear.
+That said — it works. You can open files, edit them, save them, search through them, select and manipulate text visually, manage tabs, run shell commands, and navigate your filesystem without ever leaving the terminal or reaching for a mouse.
 
 ## Features
 
@@ -139,11 +139,11 @@ Void/
 
 ## The Road Ahead
 
-Void is being built with big plans. The current Python/curses implementation is the proving ground — a place to explore ideas, nail down the interaction model, and figure out what a terminal editor can really be when it stops apologizing for not being a GUI.
+Void is being built with love and excitement for a tool that could go so many directions, I have big plans for it, but these early development stages are about finding out what plans are viable, useful and actually make sense. The current Python/curses implementation is the proving ground — a place to explore my ideas, the communities ideas and eventually settling in to something sustainable and long term!
 
-The long-term vision includes rewriting performance critical parts in a systems language as the project grows. It will have broader language support, plugin architecture, and features that have traditionally been reserved for heavyweight editors, but also features you would not expect in any editor — all without sacrificing the speed and directness of working inside a terminal.
+A few long term goals include rewriting performance critical parts in a systems language as the project grows. It will have broader language support, plugin architecture, and features that have traditionally been reserved for heavyweight editors, but also features you would not expect in a terminal based tool. The most important thing about this whole project is that I never stop learning, never stop improving and heeding the advice of much more experienced developers than myself.
 
-This is just the beginning.
+This is just the beginning of a project I am already deeply fond of :p 
 
 VOID.v0.1 
 
