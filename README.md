@@ -25,7 +25,7 @@ Tabbed editing. An embedded terminal. A file finder panel. Visual selection. Syn
 
 ## Current State
 
-**Void is a work in progress.** It has rough edges, I am VERY new to shipping any type of software let alone a tool of this scope. There are still plenty of missing feangtures and things will or may break and my ideas aren't all concrete, but that's what it's all about. I want this to be something that it's users find truly useful, but I can't get there without going through the tribulations. This is an actively evolving project, not a polished release BY ANY MEANS. Things will be subject to change, improvement and outright being thrown out.
+**Void is a work in progress.** It has rough edges, I am VERY new to shipping any type of software let alone a tool of this scope. There are still plenty of missing features and things will or may break and my ideas aren't all concrete, but that's what it's all about. I want this to be something that it's users find truly useful, but I can't get there without going through the tribulations. This is an actively evolving project, not a polished release BY ANY MEANS. Things will be subject to change, improvement and outright being thrown out.
 
 That being said -- it works. You can open files, edit them, save them, search through them, select and manipulate text visually, manage tabs, run shell commands, and navigate your filesystem without ever leaving the terminal or reaching for a mouse.
 
