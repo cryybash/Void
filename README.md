@@ -21,7 +21,7 @@ Void is a terminal-native text editor built from scratch in Python with the curs
 
 I have Vim motions as the current foundation of movement because I believe that language of movement is simply the fastest way to navigate and manipulate text. There are many features in both IDE's and terminal editors I plan to inherit because some things shouldn't change.
 
-Tabbed editing. An embedded terminal. A file finder panel. Visual selection. Syntax highlighting. Find and replace with confirmation workflows. Auto-pairing. Auto-indentation. Undo history. A floating HUD. All of it running inside your terminal, all of it driven by the keyboard, and all of it just the beginning.
+Tabbed editing. An embedded terminal. A file finder panel. Visual selection. Syntax highlighting. Find and replace with confirmation workflows. Auto-pairing. Auto-indentation. Undo history. A floating HUD and Custom configuration file. All of it running inside your terminal, all of it driven by the keyboard, and all of it just the beginning.
 
 ## Current State
 
@@ -49,8 +49,9 @@ That being said -- it works. You can open files, edit them, save them, search th
 - **Horizontal scrolling** — Smooth margin-based scrolling for long lines
 - **Splash screen** — Animated matrix rain startup with recent file access and keybind hints
 - **Recent files** — Tracks and surfaces your recently opened files on launch
+- **Custom Config** -- Generate default .toml config file with `:config` 
 
-![Editor Screenshot](assets/VOID8.png)
+![Editor Screenshot](assets/VOID11.png)
 
 ![Editor Screenshot](assets/VOID5.png)
 
@@ -58,7 +59,7 @@ That being said -- it works. You can open files, edit them, save them, search th
 
 ### Requirements
 
-- Python 3.8+ (uv installs this automatically)
+- Python 3.11+ (uv installs this automatically)
 - A terminal emulator with color support
 
 
@@ -121,7 +122,7 @@ gt / gT .... next/prev tab      Enter ...... open / navigate
 COMMAND MODE (:)
 :w  :q  :wq  :q!  :e <file>  
 :tabnew <file>  :saveas <file> 
-:config (open/generate config.json) 
+:config (open/generate config.toml) 
 
 ```
 
