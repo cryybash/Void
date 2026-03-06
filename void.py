@@ -1,4 +1,4 @@
-# Copyright 2025 Bailey Lane-Beber
+# Copyright 2026 Bailey Lane-Beber
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,13 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+
 import curses
 import argparse
 from core.buffer import Buffer
 from modes.keybinds import handle_keypress, EditorState, open_file_in_tab
-from ui.display import (init_colors, detect_language, line_num_width, draw_line_number,
-                     draw_line, draw_indent_guides, draw_tab_bar, draw_status_bar,
-                     draw_search_highlights, draw_matching_pair, draw_visual_selection)
+from ui.syntax import detect_language
 from features.terminal import InlineTerminal
 from core.tab import Tab, TabManager
 from features.file_finder import FileFinder
@@ -27,8 +26,12 @@ from ui.splash import SplashScreen
 from modes.visual import visual_state
 from ui.aesthetics import hud, init_hud_colors
 from config.keys import NEW_FILE_NAME
+from ui.display import (init_colors, line_num_width, draw_line_number,
+                     draw_line, draw_indent_guides, draw_tab_bar, draw_status_bar,
+                     draw_search_highlights, draw_matching_pair, draw_visual_selection)
 
-# Viewing the buffer through a window 
+
+# Viewing buffer 
 class Window:
     def __init__(self, n_rows, n_cols, row=0, col=0):
         self.n_rows = n_rows
@@ -71,7 +74,7 @@ class Window:
         return cursor.row - self.row, cursor.col - self.col
 
 
-# MOVING CURSOR THROUGH THE BUFFER  
+# MOVING THROUGH BUFFER  
 class Cursor:
     def __init__(self, row=0, col=0, col_hint=None):
         self.row = row
@@ -115,12 +118,10 @@ class Cursor:
         self._col = min(self._col_hint, len(buffer[self.row]))
 
 
-# ──────────────────────────────────
+# -----------------
 #  DRAWING HELPERS
-# ──────────────────────────────────
+# -----------------
 
-
-# Draw all editor UI components for one frame
 def draw_editor(stdscr, buffer, window, cursor, tab_manager, terminal, file_finder, state, search_state, visual_state, hud):
     tab = tab_manager.active_tab
     filename = tab.filename
@@ -148,7 +149,6 @@ def draw_editor(stdscr, buffer, window, cursor, tab_manager, terminal, file_find
     draw_visual_selection(stdscr, buffer, window, editor_rows, ln_width, window.n_cols,
                           visual_state, cursor, row_offset=1)
     
-    # Status bar
     status_row = editor_rows + 1
     if search_state.confirming:
         search_info = f"Replace with '{search_state.replacement}'? (y/n/a/q) {search_state.match_info()}"
@@ -175,10 +175,9 @@ def draw_editor(stdscr, buffer, window, cursor, tab_manager, terminal, file_find
 
     return ln_width
 
-
-# ──────────────────────────────────
-#  MAIN
-# ──────────────────────────────────
+# --------------
+#      MAIN
+# --------------
 
 def main(stdscr):
     window = Window(curses.LINES - 2, curses.COLS - 1)
@@ -196,6 +195,7 @@ def main(stdscr):
     if args.filename is None:
         splash = SplashScreen()
         result = splash.show(stdscr)
+        
         if result == "__quit__":
             return
         elif result == "__file_finder__":
@@ -217,10 +217,12 @@ def main(stdscr):
                 lines = f.read().splitlines()
         except FileNotFoundError:
             lines = [""]
+        
         SplashScreen.add_recent_file(args.filename)
         buffer = Buffer(lines if lines else [""])
         first_tab = Tab(args.filename, buffer)
         tab_manager.add_tab(first_tab)
+    
     elif not skip_first_tab:
         buffer = Buffer([""])
         first_tab = Tab(NEW_FILE_NAME, buffer)
@@ -235,15 +237,17 @@ def main(stdscr):
         window.n_rows = curses.LINES - 2
         window.n_cols = curses.COLS - 1
         
-        # If no tabs yet (waiting for file finder), just render finder and wait
+        # If no tabs yet - waiting for file finder, just render finder and wait
         if not tab_manager.tabs:
             if file_finder.visible:
                 file_finder.draw(stdscr, 0, window.n_rows, row_offset=0)
             stdscr.timeout(100)
+            
             try:
                 k = stdscr.getkey()
             except curses.error:
                 continue
+            
             if state.finder_focused:
                 result = file_finder.handle_key(k)
                 if result == "blur":
@@ -282,7 +286,7 @@ def main(stdscr):
         ln_width = draw_editor(stdscr, buffer, window, cursor, tab_manager, terminal,
                                file_finder, state, search_state, visual_state, hud)
         
-        # Wire up gutter for horizontal scroll
+        # Wire up gutter for scroll
         window.horizontal_scroll(cursor, gutter=ln_width)
 
         stdscr.timeout(100)

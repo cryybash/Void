@@ -1,4 +1,4 @@
-# Copyright 2025 Bailey Lane-Beber
+# Copyright 2026 Bailey Lane-Beber
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,10 +18,8 @@ import os
 from config.keys import NEW_FILE_NAME
 from ui.display import safe_addstr
 
-# ──────────────────────────────────
 #  COLOR PAIR IDS FOR HUD
 #  Starting at 30 to avoid conflicts
-# ──────────────────────────────────
 
 HUD_NORMAL = 30
 HUD_INSERT = 31

@@ -1,4 +1,4 @@
-# Copyright 2025 Bailey Lane-Beber
+# Copyright 2026 Bailey Lane-Beber
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,9 +14,9 @@
 
 from core.editing import save_snapshot
 
-# ──────────────────────────────────
+# -------------------
 #  VISUAL MODE STATE
-# ──────────────────────────────────
+# -------------------
 
 class VisualState:
     def __init__(self):
@@ -62,9 +62,9 @@ class VisualState:
 
 
 
-# ──────────────────────────────────
+# ------------------------ 
 #  VISUAL MODE OPERATIONS
-# ──────────────────────────────────
+# ------------------------ 
 
 # Delete the selected region, works for all three visual modes
 def visual_delete(buffer, cursor, window, state, tab=None):

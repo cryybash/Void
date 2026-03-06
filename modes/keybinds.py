@@ -27,10 +27,10 @@ from config.keys import (KEY_ESCAPE, KEY_CTRL_T, KEY_CTRL_F, KEY_CTRL_V, KEY_CTR
                   NEW_FILE_NAME, INDENT_WIDTH)
 
 
-# ──────────────────────────────────
+# ------------------------------
 #  EDITOR STATE
 #  Bundles mode and focus flags
-# ──────────────────────────────────
+# ------------------------------ 
 
 class EditorState:
     def __init__(self):
@@ -42,9 +42,9 @@ class EditorState:
         self._insert_snapshot_saved = False  # for batched undo
 
 
-# ──────────────────────────────────
+# ---------
 #  HELPERS
-# ──────────────────────────────────
+# --------- 
 
 def right(window, buffer, cursor):
     cursor.right(buffer)
@@ -87,7 +87,6 @@ def open_file_in_tab(filepath, tab_manager, cursor, window):
     tab_manager.active_tab.restore_cursor(cursor, window)
     return new_tab
 
-# Switch tabs and reset cross-tab state
 def switch_tab(tab_manager, cursor, window, direction):
     tab_manager.active_tab.save_cursor(cursor, window)
     if direction == "next":
@@ -103,9 +102,9 @@ def switch_tab(tab_manager, cursor, window, direction):
     hud.reset_timer()
 
 
-# ──────────────────────────────────
+# --------------
 #  COMMAND MODE
-# ──────────────────────────────────
+# -------------- 
 
 def command_mode(stdscr, window, buffer, filename, modified, tab_manager, cursor):
     stdscr.timeout(-1)
@@ -183,9 +182,9 @@ def command_mode(stdscr, window, buffer, filename, modified, tab_manager, cursor
     return modified
 
 
-# ──────────────────────────────────
+# --------------------
 #  MAIN KEY DISPATCH
-# ──────────────────────────────────
+# -------------------- 
 
 def handle_keypress(k, stdscr, window, buffer, cursor, filename, state, terminal, tab_manager, file_finder):
     tab = tab_manager.active_tab
@@ -231,9 +230,9 @@ def handle_keypress(k, stdscr, window, buffer, cursor, filename, state, terminal
             file_finder.visible = False
         return
         
-    # ──────────────────────────
+    # --------------------------
     #  NORMAL MODE
-    # ──────────────────────────
+    # -------------------------- 
     if state.mode == "normal":
         if k == ":":
             state.mode = "command"
@@ -338,9 +337,9 @@ def handle_keypress(k, stdscr, window, buffer, cursor, filename, state, terminal
                 if mode_change == "insert":
                     state._insert_snapshot_saved = False
                     print("\033[6 q", end="", flush=True)
-    # ──────────────────────────
-    #  INSERT MODE (batched undo)
-    # ──────────────────────────
+    # -------------------------- 
+    #  INSERT MODE - batched undo
+    # --------------------------- 
     elif state.mode == "insert":
         if k == KEY_ESCAPE:
             state.mode = "normal"
@@ -407,9 +406,9 @@ def handle_keypress(k, stdscr, window, buffer, cursor, filename, state, terminal
                 right(window, buffer, cursor)
             state.modified = True
 
-    # ──────────────────────────
-    #  VISUAL MODES
-    # ──────────────────────────
+    # ---------------
+    #  VISUAL MODE
+    # ---------------
     elif state.mode in ("visual", "visual-line", "visual-block"):
         if k == KEY_ESCAPE:
             visual_state.reset()

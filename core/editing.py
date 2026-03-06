@@ -1,4 +1,4 @@
-# Copyright 2025 Bailey Lane-Beber
+# Copyright 2026 Bailey Lane-Beber
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
 # UNDO/REDO logic
 from config.keys import MAX_UNDO, INDENT_STR
 
-# Save current buffer state to undo stack - Call before any edit
+# Save current buffer state
 def save_snapshot(buffer, cursor, tab=None):
     if tab is None:
         return
@@ -74,7 +74,6 @@ def redo(buffer, cursor, window, tab=None):
         window.row = cursor.row - window.n_rows + 1
     return True
 
-# AUTO INDENTATION
 
 def get_indentation(line):
     return line[:len(line) - len(line.lstrip())]

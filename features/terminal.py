@@ -1,4 +1,4 @@
-# Copyright 2025 Bailey Lane-Beber
+# Copyright 2026 Bailey Lane-Beber
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,7 +16,6 @@ import curses
 import subprocess
 import os
 import time
-import select
 from config.keys import TERMINAL_HEIGHT, SUBPROCESS_TIMEOUT, KEY_ESCAPE
 from ui.display import safe_addstr
 
@@ -151,7 +150,7 @@ class InlineTerminal:
         self._awaiting_input = False
         self._scroll_to_bottom()
     
-    # Send user input to the running process's stdin
+    # user input to process's stdin
     def send_input(self, text):
         if self._running_proc and self._running_proc.stdin:
             try:

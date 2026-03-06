@@ -1,4 +1,4 @@
-# Copyright 2025 Bailey Lane-Beber
+# Copyright 2026 Bailey Lane-Beber
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -20,9 +20,9 @@ from config.keys import KEY_CTRL_D, KEY_CTRL_U, KEY_CTRL_R
 clipboard = []
 
 
-# ──────────────────────────────────
-#        VIM MOTION FUNCTIONS
-# ──────────────────────────────────
+# ----------------------------
+#     VIM MOTION FUNCTIONS
+# ---------------------------- 
 
 def motion_h(buffer, cursor, window):
     if cursor.col > 0:
@@ -136,9 +136,9 @@ def motion_G(buffer, cursor, window):
     if cursor.row > window.n_rows - 1:
         window.row = cursor.row - window.n_rows + 1
 
-# ──────────────────────────────────
+# --------------------
 #  OPERATOR FUNCTIONS
-# ──────────────────────────────────
+# --------------------
 
 def op_delete_line(buffer, cursor, window, tab=None):
     save_snapshot(buffer, cursor, tab)
@@ -211,9 +211,9 @@ def op_open_above(buffer, cursor, window, tab=None):
     return "insert"
 
 
-# ──────────────────────────────────
-#  DELETE WITH MOTION (d + motion)
-# ──────────────────────────────────
+# ---------------------------------
+#  DELETE WITH MOTION - d + motion
+# ---------------------------------  
 
 def delete_to_end(buffer, cursor, window, tab=None):
     save_snapshot(buffer, cursor, tab)
@@ -277,9 +277,9 @@ def delete_to_bottom(buffer, cursor, window, tab=None):
     return True
 
 
-# ──────────────────────────────────
+# --------------------------
 #  PENDING STATE & DISPATCH
-# ──────────────────────────────────
+# --------------------------
 
 pending_op = None
 key_buffer = ""

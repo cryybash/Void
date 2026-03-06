@@ -1,4 +1,4 @@
-# Copyright 2025 Bailey Lane-Beber
+# Copyright 2026 Bailey Lane-Beber
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -35,14 +35,14 @@ class Tab:
             name = "● " + name
         return name
     
-    # Store cursor and window position before switching away      
+    # Store cursor and window position      
     def save_cursor(self, cursor, window):
         self.cursor_row = cursor.row
         self.cursor_col = cursor.col
         self.window_row = window.row
         self.window_col = window.col
     
-    # Restore cursor and window position when switching to this tab
+    # Restore cursor and window position
     def restore_cursor(self, cursor, window):
         cursor.row = self.cursor_row
         cursor.col = self.cursor_col
@@ -50,7 +50,6 @@ class Tab:
         window.row = self.window_row
         window.col = self.window_col
 
-# Managing and switching between multiple tabs
 class TabManager:
     def __init__(self):
         self.tabs = []

@@ -1,4 +1,4 @@
-# Copyright 2025 Bailey Lane-Beber
+# Copyright 2026 Bailey Lane-Beber
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -95,12 +95,10 @@ class FileFinder:
             if result:
                 return result
         elif k == "h":
-            # Go back a directory
             self.cwd = os.path.dirname(self.cwd)
             self.refresh_files()
 
         elif k == ".":
-            # Toggle hidden files (changed from 'h' to avoid vim conflict)
             self.show_hidden = not self.show_hidden
             self.refresh_files()
         elif k == "r":
