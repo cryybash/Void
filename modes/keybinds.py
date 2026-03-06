@@ -21,6 +21,7 @@ from modes.search import search_state, search_prompt
 from ui.splash import SplashScreen
 from modes.visual import visual_state, visual_delete, visual_yank, visual_change, visual_indent
 from ui.display import draw_status_bar
+from config.settings import create_default_config, CONFIG_PATH
 from ui.aesthetics import hud
 from config.keys import (KEY_ESCAPE, KEY_CTRL_T, KEY_CTRL_F, KEY_CTRL_V, KEY_CTRL_D,
                   KEY_CTRL_U, KEY_ENTER, KEY_BACKSPACE_CODES, KEY_DELETE_CODES,
@@ -60,7 +61,7 @@ def save(filename, buffer):
     if not filename or filename in (NEW_FILE_NAME,):
         return False
     with open(filename, "w") as f:
-        f.write("\n".join(buffer.lines))
+        f.write("\n".join(buffer.lines) + "\n")
     return True
 
 # Shared helper for opening a file into a new tab, returns the new tab
@@ -177,6 +178,9 @@ def command_mode(stdscr, window, buffer, filename, modified, tab_manager, cursor
             save(new_filename, buffer)
             SplashScreen.add_recent_file(new_filename)
             modified = False
+    elif cmd == "config":
+        create_default_config()
+        open_file_in_tab(CONFIG_PATH, tab_manager, cursor, window)
 
     stdscr.timeout(100)
     return modified

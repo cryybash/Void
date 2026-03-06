@@ -145,6 +145,7 @@ These binds are active on the startup splash screen before any file is open.
 | `:tabn` / `:tabnext` | Switch to the next tab |
 | `:tabp` / `:tabprev` | Switch to the previous tab |
 | `:tabc` / `:tabclose` | Close the current tab |
+| :config | Generate a default config in new tab |
 
 **Inside the command/search prompt:**
 

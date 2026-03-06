@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "void-editor"
+version = "0.2.0"
+description = "A terminal-native editor that refuses to pick a side"
+readme = "README.md"
+license = "Apache-2.0"
+requires-python = ">=3.8"
+authors = [
+    { name = "Bailey Beber" }
+]
+
+keywords = ["editor", "terminal", "vim", "curses", "tui"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console :: Curses",
+    "Intended Audience :: Developers",
+    "Topic :: Text Editors",
+]
+
+[project.scripts]
+void = "void:main_entry"
+
+[project.urls]
+Repository = "https://github.com/cryybash/Void"
+
+[tool.setuptools]
+py-modules = ["void"]
+
+[tool.setuptools.packages.find]
+include = ["config*", "core*", "features*", "modes*", "ui*"]
+
+[tool.setuptools.package-data]
+config = ["keybinds.md"]
+

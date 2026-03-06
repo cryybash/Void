@@ -15,6 +15,7 @@
 
 import curses
 import argparse
+from config.settings import settings
 from core.buffer import Buffer
 from modes.keybinds import handle_keypress, EditorState, open_file_in_tab
 from ui.syntax import detect_language
@@ -140,8 +141,9 @@ def draw_editor(stdscr, buffer, window, cursor, tab_manager, terminal, file_find
         bg = curses.A_BOLD if is_cursor_line else None           
         draw_line(stdscr, screen_row, ln_width, display_line, lang, window.n_cols, bg)
 
-    draw_indent_guides(stdscr, buffer, window, editor_rows, ln_width, window.n_cols,
-                       cursor_row=cursor.row, cursor_col=cursor.col, row_offset=1)
+    if settings["show_indent_guides"]:
+        draw_indent_guides(stdscr, buffer, window, editor_rows, ln_width, window.n_cols,
+                           cursor_row=cursor.row, cursor_col=cursor.col, row_offset=1)
     draw_search_highlights(stdscr, buffer, window, editor_rows, ln_width, window.n_cols,
                            search_state, row_offset=1)
     draw_matching_pair(stdscr, buffer, window, cursor, ln_width, window.n_cols,
@@ -164,8 +166,8 @@ def draw_editor(stdscr, buffer, window, cursor, tab_manager, terminal, file_find
     if file_finder.visible:
         editor_cols = file_finder.get_editor_cols(window.n_cols)
         file_finder.draw(stdscr, editor_cols + 1, editor_rows, row_offset=1)
-    
-    hud.draw(stdscr, state.mode, filename, window.n_cols + 1, row_offset=1)
+    if settings["show_hud"]:
+        hud.draw(stdscr, state.mode, filename, window.n_cols + 1, row_offset=1)
     
     # Position cursor (accounting for gutter)
     translated_row, translated_col = window.translate(cursor)
@@ -194,7 +196,7 @@ def main(stdscr):
     # Show splash screen if no file is given
     if args.filename is None:
         splash = SplashScreen()
-        result = splash.show(stdscr)
+        result = splash.show(stdscr, animate=settings["splash_animation"])
         
         if result == "__quit__":
             return
@@ -299,6 +301,12 @@ def main(stdscr):
         
         tab.modified = state.modified
 
+def main_entry():
+    try:
+        curses.wrapper(main)
+
+    except KeyboardInterrupt:
+        pass 
 
 if __name__ == "__main__":
-    curses.wrapper(main)
+    main_entry()

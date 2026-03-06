@@ -54,22 +54,41 @@ That being said -- it works. You can open files, edit them, save them, search th
 
 ![Editor Screenshot](assets/VOID5.png)
 
-## Getting Started
+## Installation
 
 ### Requirements
 
-- Python 3.x
+- Python 3.8+ (uv installs this automatically)
 - A terminal emulator with color support
 
-### Usage
 
+### From source
 ```bash
-# Open Void with the splash screen
-python void.py
-
-# Open a specific file
-python void.py myfile.py
 ```
+git clone https://github.com/cryybash/Void.git
+cd Void
+```
+```
+
+
+Then install with any of:
+```bash
+```
+uv tool install .     # recommended
+pipx install .        # alternative
+pip install .         # if you don't have uv or pipx
+```
+```
+
+
+### Usage
+```bash
+```
+void               # Open with splash screen 
+void myfile.py     # Open specific file type/extension 
+```
+```
+
 
 ## Keybinds
 
@@ -104,7 +123,10 @@ gt / gT .... next/prev tab      Enter ...... open / navigate
                                 r .......... refresh file finder
                                `.` ........ show hidden files (dots)
 COMMAND MODE (:)
-:w  :q  :wq  :q!  :e <file>  :tabnew <file>  :saveas <file>
+:w  :q  :wq  :q!  :e <file>  
+:tabnew <file>  :saveas <file> 
+:config (open/generate config.json) 
+
 ```
 
 ## Project Structure
@@ -143,7 +165,7 @@ A few long term goals include rewriting performance critical parts in a systems 
 
 This is just the beginning of a project I am already deeply fond of :p 
 
-VOID.v0.1 
+v0.2.0 
 
 ---
 

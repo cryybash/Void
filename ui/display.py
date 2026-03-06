@@ -13,6 +13,7 @@
 # limitations under the License.
 
 import curses
+from config.keys import INDENT_WIDTH
 from ui.syntax import tokenize_line, detect_language
 from config.colors import (COLOR_KEYWORD, COLOR_STRING, COLOR_COMMENT,
                            COLOR_NUMBER, COLOR_BUILTIN, COLOR_DECORATOR,
@@ -90,7 +91,7 @@ def draw_tab_bar(stdscr, tab_manager, n_cols):
 
 
 def draw_indent_guides(stdscr, buffer, window, editor_rows, ln_width, max_cols, cursor_row=None, cursor_col=None, row_offset=0):
-    tab_width = 4
+    tab_width = INDENT_WIDTH
 
     # Figure out which indent level the cursor belongs to
     active_level = -1

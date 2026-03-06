@@ -12,10 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from config.settings import settings
+
 
 #  NAMED CONSTANTS
-#  Replaces magic strings throughout
-
+#  Replaces magic strings 
 # Control key codes
 KEY_ESCAPE = "\x1b"
 KEY_CTRL_D = "\x04"
@@ -30,13 +31,13 @@ KEY_ENTER = "\n"
 KEY_BACKSPACE_CODES = ("KEY_BACKSPACE", "\x7f")
 KEY_DELETE_CODES = ("KEY_DC", KEY_CTRL_D)
 
-# Editor defaults
-INDENT_WIDTH = 4
+# Editor defaults loading from ~/.config/void/config.json
+INDENT_WIDTH = settings["indent_width"]
 INDENT_STR = " " * INDENT_WIDTH
-MAX_UNDO = 100
-TERMINAL_HEIGHT = 10
-FILE_FINDER_WIDTH = 30
-SUBPROCESS_TIMEOUT = 10
+MAX_UNDO = settings["max_undo"]
+TERMINAL_HEIGHT = settings["terminal_height"]
+FILE_FINDER_WIDTH = settings["file_finder_width"]
+SUBPROCESS_TIMEOUT = settings["subprocess_timeout"]
 
 # Placeholder filenames
 NEW_FILE_NAME = "[new]"

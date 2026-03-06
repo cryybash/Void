@@ -17,6 +17,7 @@ import time
 import random
 import os
 import json
+from config.settings import settings
 from ui.display import safe_addstr
 
 RECENT_FILES_PATH = os.path.expanduser("~/.void_recent_files.json")
@@ -238,14 +239,18 @@ class SplashScreen:
         safe_addstr(stdscr, content_row, footer_col, footer, gray)
     
     
-    def show(self, stdscr):
+    def show(self, stdscr, animate=True):
         curses.curs_set(0)
         stdscr.erase()
 
         max_rows = curses.LINES
         max_cols = curses.COLS
-
-        logo_row, logo_col, logo_height, logo_width = self._animate_logo(stdscr, max_rows, max_cols)
+        
+        if animate:
+            logo_row, logo_col, logo_height, logo_width = self._animate_logo(stdscr, max_rows, max_cols)
+        else:
+            logo_row, logo_col, logo_height, logo_width = self._draw_static_logo(stdscr, max_rows, max_cols)
+        
         self._draw_content(stdscr, max_rows, max_cols, logo_row, logo_height)
         stdscr.refresh()
 
@@ -291,4 +296,4 @@ class SplashScreen:
         logo_color = curses.color_pair(SPLASH_RAIN_BRIGHT) | curses.A_BOLD
         for r, line in enumerate(LOGO):
             safe_addstr(stdscr, start_row + r, start_col, line, logo_color)
-        return start_row, logo_height 
+        return start_row, start_col, logo_height, logo_width  
